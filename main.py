@@ -1,11 +1,15 @@
+import time
 from sys import exit
-from printer import print_menu
-from contact import add_contact, show_all_contact
+from termcolor import colored
+from contact import add_contact, show_all_contact, search_contact, delete_contact, update_contact, contact_groups, print_menu
+
 
 
 def main():
     contacts: list[dict] = [
-        {"first_name": 'ali', 'last_name': 'valiyev', 'phone': '3241234123', "group": 'other'}
+        {'first_name': 'Ali', 'last_name': 'Valiyev', 'phone': '998993108382', "group": "Do'stlar"},
+        {"first_name": 'Parviz', 'last_name': 'Boltayev', 'phone': '99899777777', "group": "Do'stlar"},
+        {"first_name": 'Mom', 'last_name': '', 'phone': '998951111111', "group": 'Oila'}
     ]
     
     while True:
@@ -18,15 +22,20 @@ def main():
         elif choice == '2':
             show_all_contact(contacts)
         elif choice == '3':
-            pass
+            search_contact(contacts)
         elif choice == '4':
-            pass
+            delete_contact(contacts)
         elif choice == '5':
-            pass
+            update_contact(contacts)
         elif choice == '6':
-            pass
-        else:
+            contact_groups(contacts)
+        elif choice == '7':
+            print(colored("Dasturdan chiqilmoqda...", "yellow"))
+            time.sleep(2)
+            print(colored("Siz dasturdan chiqdingiz", "green"))
             exit(0)
+        else:
+            print(colored("Noto'g'ri tanlov. Qaytadan urinib ko'ring.\n", "red"))
 
 if __name__ == "__main__":
     main()
